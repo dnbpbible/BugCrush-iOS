@@ -33,7 +33,7 @@ class GameScene: SKScene {
     private var selectionSprite = SKSpriteNode()
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder) isnot used in this app")
+        fatalError("init(coder) is not used in this app")
     }
 
     override init(size: CGSize) {
@@ -47,8 +47,9 @@ class GameScene: SKScene {
         addChild(gameLayer)
         gameLayer.isHidden = true
         
-        let layerPosition = CGPoint(x: -tileWidth * CGFloat(numColumns) / 2,
-                                    y: -tileHeight * CGFloat(numRows) / 2)
+        let layerPosition = CGPoint(
+            x: -tileWidth * CGFloat(numColumns) / 2,
+            y: -tileHeight * CGFloat(numRows) / 2)
         tilesLayer.position = layerPosition
         maskLayer.position = layerPosition
         cropLayer.maskNode = maskLayer

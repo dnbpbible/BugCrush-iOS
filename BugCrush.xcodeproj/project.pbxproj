@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA173A8020A9CBBA00C54289 /* Level_3.json in Resources */ = {isa = PBXBuildFile; fileRef = DA173A7B20A9CBB900C54289 /* Level_3.json */; };
+		DA173A8120A9CBBA00C54289 /* Level_2.json in Resources */ = {isa = PBXBuildFile; fileRef = DA173A7C20A9CBBA00C54289 /* Level_2.json */; };
+		DA173A8220A9CBBA00C54289 /* Level_1.json in Resources */ = {isa = PBXBuildFile; fileRef = DA173A7D20A9CBBA00C54289 /* Level_1.json */; };
+		DA173A8320A9CBBA00C54289 /* Level_4.json in Resources */ = {isa = PBXBuildFile; fileRef = DA173A7E20A9CBBA00C54289 /* Level_4.json */; };
+		DA173A8420A9CBBA00C54289 /* Level_0.json in Resources */ = {isa = PBXBuildFile; fileRef = DA173A7F20A9CBBA00C54289 /* Level_0.json */; };
+		DA173A8B20A9CBC400C54289 /* Scrape.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA173A8520A9CBC300C54289 /* Scrape.wav */; };
+		DA173A8C20A9CBC400C54289 /* Mining by Moonlight.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA173A8620A9CBC400C54289 /* Mining by Moonlight.mp3 */; };
+		DA173A8D20A9CBC400C54289 /* Chomp.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA173A8720A9CBC400C54289 /* Chomp.wav */; };
+		DA173A8E20A9CBC400C54289 /* Ka-Ching.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA173A8820A9CBC400C54289 /* Ka-Ching.wav */; };
+		DA173A8F20A9CBC400C54289 /* Drip.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA173A8920A9CBC400C54289 /* Drip.wav */; };
+		DA173A9020A9CBC400C54289 /* Error.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA173A8A20A9CBC400C54289 /* Error.wav */; };
 		DA908B9920A5D11200E3FDD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA908B9820A5D11200E3FDD5 /* AppDelegate.swift */; };
 		DA908B9F20A5D11200E3FDD5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA908B9E20A5D11200E3FDD5 /* GameScene.swift */; };
 		DA908BA120A5D11200E3FDD5 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA908BA020A5D11200E3FDD5 /* GameViewController.swift */; };
@@ -17,8 +28,6 @@
 		DA908BBF20A5D11400E3FDD5 /* BugCrushUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA908BBE20A5D11400E3FDD5 /* BugCrushUITests.swift */; };
 		DA908BCD20A5D2B200E3FDD5 /* Grid.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DA908BCC20A5D2B200E3FDD5 /* Grid.atlas */; };
 		DA908BCF20A5D2BC00E3FDD5 /* Sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DA908BCE20A5D2BC00E3FDD5 /* Sprites.atlas */; };
-		DA908BD220A5D2C600E3FDD5 /* Levels in Resources */ = {isa = PBXBuildFile; fileRef = DA908BD020A5D2C500E3FDD5 /* Levels */; };
-		DA908BD320A5D2C600E3FDD5 /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = DA908BD120A5D2C600E3FDD5 /* Sounds */; };
 		DA908BE220A5D5E500E3FDD5 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA908BE120A5D5E500E3FDD5 /* Tile.swift */; };
 		DA908BE420A5D62000E3FDD5 /* Swap.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA908BE320A5D62000E3FDD5 /* Swap.swift */; };
 		DA908BE620A5D65400E3FDD5 /* Cookie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA908BE520A5D65400E3FDD5 /* Cookie.swift */; };
@@ -46,6 +55,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA173A7B20A9CBB900C54289 /* Level_3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_3.json; sourceTree = "<group>"; };
+		DA173A7C20A9CBBA00C54289 /* Level_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_2.json; sourceTree = "<group>"; };
+		DA173A7D20A9CBBA00C54289 /* Level_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_1.json; sourceTree = "<group>"; };
+		DA173A7E20A9CBBA00C54289 /* Level_4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_4.json; sourceTree = "<group>"; };
+		DA173A7F20A9CBBA00C54289 /* Level_0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_0.json; sourceTree = "<group>"; };
+		DA173A8520A9CBC300C54289 /* Scrape.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Scrape.wav; sourceTree = "<group>"; };
+		DA173A8620A9CBC400C54289 /* Mining by Moonlight.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Mining by Moonlight.mp3"; sourceTree = "<group>"; };
+		DA173A8720A9CBC400C54289 /* Chomp.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Chomp.wav; sourceTree = "<group>"; };
+		DA173A8820A9CBC400C54289 /* Ka-Ching.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Ka-Ching.wav"; sourceTree = "<group>"; };
+		DA173A8920A9CBC400C54289 /* Drip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Drip.wav; sourceTree = "<group>"; };
+		DA173A8A20A9CBC400C54289 /* Error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Error.wav; sourceTree = "<group>"; };
 		DA908B9520A5D11100E3FDD5 /* BugCrush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BugCrush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA908B9820A5D11200E3FDD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA908B9E20A5D11200E3FDD5 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -62,8 +82,6 @@
 		DA908BC020A5D11400E3FDD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA908BCC20A5D2B200E3FDD5 /* Grid.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Grid.atlas; sourceTree = "<group>"; };
 		DA908BCE20A5D2BC00E3FDD5 /* Sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Sprites.atlas; sourceTree = "<group>"; };
-		DA908BD020A5D2C500E3FDD5 /* Levels */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Levels; sourceTree = "<group>"; };
-		DA908BD120A5D2C600E3FDD5 /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 		DA908BE120A5D5E500E3FDD5 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		DA908BE320A5D62000E3FDD5 /* Swap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swap.swift; sourceTree = "<group>"; };
 		DA908BE520A5D65400E3FDD5 /* Cookie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cookie.swift; sourceTree = "<group>"; };
@@ -98,6 +116,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA173A7920A9CB8F00C54289 /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				DA173A7F20A9CBBA00C54289 /* Level_0.json */,
+				DA173A7D20A9CBBA00C54289 /* Level_1.json */,
+				DA173A7C20A9CBBA00C54289 /* Level_2.json */,
+				DA173A7B20A9CBB900C54289 /* Level_3.json */,
+				DA173A7E20A9CBBA00C54289 /* Level_4.json */,
+			);
+			path = Levels;
+			sourceTree = "<group>";
+		};
+		DA173A7A20A9CB9400C54289 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				DA173A8720A9CBC400C54289 /* Chomp.wav */,
+				DA173A8920A9CBC400C54289 /* Drip.wav */,
+				DA173A8A20A9CBC400C54289 /* Error.wav */,
+				DA173A8820A9CBC400C54289 /* Ka-Ching.wav */,
+				DA173A8620A9CBC400C54289 /* Mining by Moonlight.mp3 */,
+				DA173A8520A9CBC300C54289 /* Scrape.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		DA908B8C20A5D11100E3FDD5 = {
 			isa = PBXGroup;
 			children = (
@@ -132,11 +175,11 @@
 				DA908B9820A5D11200E3FDD5 /* AppDelegate.swift */,
 				DA908BE320A5D62000E3FDD5 /* Swap.swift */,
 				DA908BD420A5D2DA00E3FDD5 /* Storyboards */,
-				DA908BD020A5D2C500E3FDD5 /* Levels */,
-				DA908BD120A5D2C600E3FDD5 /* Sounds */,
+				DA173A7A20A9CB9400C54289 /* Sounds */,
+				DA173A7920A9CB8F00C54289 /* Levels */,
+				DA908BA520A5D11300E3FDD5 /* Assets.xcassets */,
 				DA908BCE20A5D2BC00E3FDD5 /* Sprites.atlas */,
 				DA908BCC20A5D2B200E3FDD5 /* Grid.atlas */,
-				DA908BA520A5D11300E3FDD5 /* Assets.xcassets */,
 				DA908BAA20A5D11300E3FDD5 /* Info.plist */,
 			);
 			path = BugCrush;
@@ -274,12 +317,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA908BA420A5D11200E3FDD5 /* Main.storyboard in Resources */,
-				DA908BD220A5D2C600E3FDD5 /* Levels in Resources */,
+				DA173A8F20A9CBC400C54289 /* Drip.wav in Resources */,
+				DA173A8420A9CBBA00C54289 /* Level_0.json in Resources */,
+				DA173A8E20A9CBC400C54289 /* Ka-Ching.wav in Resources */,
+				DA173A8D20A9CBC400C54289 /* Chomp.wav in Resources */,
+				DA173A8320A9CBBA00C54289 /* Level_4.json in Resources */,
+				DA173A8120A9CBBA00C54289 /* Level_2.json in Resources */,
+				DA173A8B20A9CBC400C54289 /* Scrape.wav in Resources */,
 				DA908BCF20A5D2BC00E3FDD5 /* Sprites.atlas in Resources */,
-				DA908BD320A5D2C600E3FDD5 /* Sounds in Resources */,
 				DA908BCD20A5D2B200E3FDD5 /* Grid.atlas in Resources */,
+				DA173A8C20A9CBC400C54289 /* Mining by Moonlight.mp3 in Resources */,
+				DA173A8220A9CBBA00C54289 /* Level_1.json in Resources */,
 				DA908BA620A5D11300E3FDD5 /* Assets.xcassets in Resources */,
+				DA173A8020A9CBBA00C54289 /* Level_3.json in Resources */,
 				DA908BA920A5D11300E3FDD5 /* LaunchScreen.storyboard in Resources */,
+				DA173A9020A9CBC400C54289 /* Error.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,7 +13,7 @@
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="CookieCrunch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="BugCrush" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -116,11 +116,11 @@
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                     </view>
                     <connections>
-                        <outlet property="gameOverPanel" destination="LJ4-Ff-cDr" id="FeW-ZQ-R25"/>
-                        <outlet property="movesLabel" destination="kyL-yK-9Bz" id="eFA-Nf-PX8"/>
-                        <outlet property="scoreLabel" destination="BOa-Xw-gRp" id="EE1-ZY-zQH"/>
-                        <outlet property="shuffleButton" destination="dzj-sO-0hO" id="zu6-27-f9N"/>
-                        <outlet property="targetLabel" destination="xRT-0p-IaC" id="hCt-gC-XKf"/>
+                        <outlet property="gameOverPanel" destination="LJ4-Ff-cDr" id="GlT-OX-sDb"/>
+                        <outlet property="movesLabel" destination="kyL-yK-9Bz" id="yMR-M6-mnx"/>
+                        <outlet property="scoreLabel" destination="BOa-Xw-gRp" id="Kzz-ha-2Vi"/>
+                        <outlet property="shuffleButton" destination="dzj-sO-0hO" id="XNe-V1-Tv8"/>
+                        <outlet property="targetLabel" destination="xRT-0p-IaC" id="YiN-sR-viH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
