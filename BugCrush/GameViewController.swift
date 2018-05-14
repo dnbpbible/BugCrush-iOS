@@ -53,6 +53,10 @@ class GameViewController: UIViewController {
         
         scene = GameScene(size: skView.bounds.size)
         scene.scaleMode = .aspectFill
+        
+        level = Level(filename: "Level_\(levelNumber)")
+        scene.level = level
+        
         scene.addTiles()
         scene.swipeHandler = handleSwipe
         
@@ -90,7 +94,7 @@ class GameViewController: UIViewController {
     }
     
     func shuffle() {
-        scene.removeAllCookeSprites()
+        scene.removeAllCookieSprites()
         let newCookies = level.shuffle()
         scene.addSprites(for: newCookies)
     }

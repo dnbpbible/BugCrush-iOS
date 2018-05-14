@@ -161,7 +161,7 @@ class Level {
                         
                         // Swap them back
                         cookies[column, row] = cookie
-                        cookies[column + 1, row] = other
+                        cookies[column, row + 1] = other
                     }
                 }
             }

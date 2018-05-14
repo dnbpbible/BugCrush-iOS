@@ -73,10 +73,13 @@ class GameScene: SKScene {
             sprite.xScale = 0.5
             sprite.yScale = 0.5
             
-            sprite.run(SKAction.sequence([SKAction.wait(forDuration: 0.25, withRange: 0.5),
-                                          SKAction.group([SKAction.fadeIn(withDuration: 0.25),
-                                                           SKAction.scale(to: 1.0, duration: 0.25)
-                                            ])
+            sprite.run(
+                SKAction.sequence([
+                    SKAction.wait(forDuration: 0.25, withRange: 0.5),
+                    SKAction.group([
+                        SKAction.fadeIn(withDuration: 0.25),
+                        SKAction.scale(to: 1.0, duration: 0.25)
+                    ])
                 ]))
         }
     }
@@ -111,7 +114,7 @@ class GameScene: SKScene {
                 
                 // Values 0 (no tiles), 6 and 9 (two opposite tiles) are not drawn
                 if value != 0 && value != 6 && value != 9 {
-                    let name = String(format: "Tile_ld", value)
+                    let name = String(format: "Tile_%ld", value)
                     let tileNode = SKSpriteNode(imageNamed: name)
                     tileNode.size = CGSize(width: tileWidth, height: tileHeight)
                     var point = pointFor(column: column, row: row)
@@ -125,13 +128,14 @@ class GameScene: SKScene {
     }
     
     private func pointFor(column: Int, row: Int) -> CGPoint {
-        return CGPoint(x: CGFloat(column) * tileWidth + tileWidth / 2,
-                       y: CGFloat(row) * tileHeight + tileHeight / 2)
+        return CGPoint(
+            x: CGFloat(column) * tileWidth + tileWidth / 2,
+            y: CGFloat(row) * tileHeight + tileHeight / 2)
     }
     
     private func convertPoint(_ point: CGPoint) -> (success: Bool, column: Int, row: Int) {
         if point.x >= 0 && point.x < CGFloat(numColumns) * tileWidth &&
-            point.y >= 0 && point.y < CGFloat(numRows) * tileHeight {
+           point.y >= 0 && point.y < CGFloat(numRows) * tileHeight {
             return (true, Int(point.x / tileWidth), Int(point.y / tileHeight))
         } else {
             return (false, 0, 0)
@@ -218,7 +222,7 @@ class GameScene: SKScene {
         
         let moveB = SKAction.move(to: spriteA.position, duration: duration)
         moveB.timingMode = .easeOut
-        spriteB.run(moveB, completion: completion)
+        spriteB.run(moveB)
         
         run(swapSound)
     }
@@ -334,8 +338,9 @@ class GameScene: SKScene {
     func animateScore(for chain: Chain) {
         let firstSprite = chain.firstCookie().sprite!
         let lastSprite = chain.lastCookie().sprite!
-        let centerPosition = CGPoint(x: (firstSprite.position.x + lastSprite.position.x) / 2,
-                                     y: (firstSprite.position.y + lastSprite.position.y) / 2 - 8)
+        let centerPosition = CGPoint(
+            x: (firstSprite.position.x + lastSprite.position.x) / 2,
+            y: (firstSprite.position.y + lastSprite.position.y) / 2 - 8)
         
         let scoreLabel = SKLabelNode(fontNamed: "GillSans-BoldItalic")
         scoreLabel.fontSize = 16
@@ -363,7 +368,7 @@ class GameScene: SKScene {
         gameLayer.run(action, completion: completion)
     }
     
-    func removeAllCookeSprites() {
+    func removeAllCookieSprites() {
         cookiesLayer.removeAllChildren()
     }
 }
