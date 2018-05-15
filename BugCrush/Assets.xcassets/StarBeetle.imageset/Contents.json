@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "StarBeetle.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "StarBeetle@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "starburst_512_purple.png",
+      "filename" : "StarBeetle@3x.png",
       "scale" : "3x"
     }
   ],

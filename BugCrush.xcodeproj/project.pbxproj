@@ -27,7 +27,6 @@
 		DA908BB420A5D11400E3FDD5 /* BugCrushTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA908BB320A5D11400E3FDD5 /* BugCrushTests.swift */; };
 		DA908BBF20A5D11400E3FDD5 /* BugCrushUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA908BBE20A5D11400E3FDD5 /* BugCrushUITests.swift */; };
 		DA908BCD20A5D2B200E3FDD5 /* Grid.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DA908BCC20A5D2B200E3FDD5 /* Grid.atlas */; };
-		DA908BCF20A5D2BC00E3FDD5 /* Sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DA908BCE20A5D2BC00E3FDD5 /* Sprites.atlas */; };
 		DA908BE220A5D5E500E3FDD5 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA908BE120A5D5E500E3FDD5 /* Tile.swift */; };
 		DA908BE420A5D62000E3FDD5 /* Swap.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA908BE320A5D62000E3FDD5 /* Swap.swift */; };
 		DA908BE620A5D65400E3FDD5 /* Cookie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA908BE520A5D65400E3FDD5 /* Cookie.swift */; };
@@ -81,7 +80,6 @@
 		DA908BBE20A5D11400E3FDD5 /* BugCrushUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BugCrushUITests.swift; sourceTree = "<group>"; };
 		DA908BC020A5D11400E3FDD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA908BCC20A5D2B200E3FDD5 /* Grid.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Grid.atlas; sourceTree = "<group>"; };
-		DA908BCE20A5D2BC00E3FDD5 /* Sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Sprites.atlas; sourceTree = "<group>"; };
 		DA908BE120A5D5E500E3FDD5 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		DA908BE320A5D62000E3FDD5 /* Swap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swap.swift; sourceTree = "<group>"; };
 		DA908BE520A5D65400E3FDD5 /* Cookie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cookie.swift; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 				DA173A7A20A9CB9400C54289 /* Sounds */,
 				DA173A7920A9CB8F00C54289 /* Levels */,
 				DA908BA520A5D11300E3FDD5 /* Assets.xcassets */,
-				DA908BCE20A5D2BC00E3FDD5 /* Sprites.atlas */,
 				DA908BCC20A5D2B200E3FDD5 /* Grid.atlas */,
 				DA908BAA20A5D11300E3FDD5 /* Info.plist */,
 			);
@@ -324,7 +321,6 @@
 				DA173A8320A9CBBA00C54289 /* Level_4.json in Resources */,
 				DA173A8120A9CBBA00C54289 /* Level_2.json in Resources */,
 				DA173A8B20A9CBC400C54289 /* Scrape.wav in Resources */,
-				DA908BCF20A5D2BC00E3FDD5 /* Sprites.atlas in Resources */,
 				DA908BCD20A5D2B200E3FDD5 /* Grid.atlas in Resources */,
 				DA173A8C20A9CBC400C54289 /* Mining by Moonlight.mp3 in Resources */,
 				DA173A8220A9CBBA00C54289 /* Level_1.json in Resources */,

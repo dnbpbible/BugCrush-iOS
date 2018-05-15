@@ -10,16 +10,16 @@ import SpriteKit
 
 // MARK: - CookieType
 enum CookieType: Int {
-    case unknown = 0, croissant, cupcake, danish, donut, macaroon, sugarCookie
+    case unknown = 0, bee, bug, ladybug, leafbettle, starbeetle, strinkbug
     
     var spriteName: String {
         let spriteNames = [
-            "Croissant",
-            "Cupcake",
-            "Danish",
-            "Donut",
-            "Macaroon",
-            "SugarCookie"]
+            "Bee",
+            "Bug",
+            "LadyBug",
+            "LeafBeetle",
+            "StarBeetle",
+            "StinkBug"]
         
         return spriteNames[rawValue - 1]
     }
