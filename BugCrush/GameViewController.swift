@@ -19,7 +19,7 @@ class GameViewController: UIViewController {
     var movesLeft = 0
     var score = 0
     var tapGestureRecognizer: UITapGestureRecognizer!
-    var currentLevelNum = 1
+    var currentLevelNum = 0
     
     lazy var backgroundMusic: AVAudioPlayer? = {
         guard let url = Bundle.main.url(forResource: "Mining by Moonlight", withExtension: "mp3") else {
@@ -51,12 +51,12 @@ class GameViewController: UIViewController {
         let skView = view as! SKView
         skView.isMultipleTouchEnabled = false
         
-        scene = GameScene(size: skView.bounds.size)
-        scene.scaleMode = .aspectFill
-        
         level = Level(filename: "Level_\(levelNumber)")
+
+        scene = GameScene(size: skView.bounds.size, background: level.background)
+        scene.scaleMode = .aspectFill
         scene.level = level
-        
+
         scene.addTiles()
         scene.swipeHandler = handleSwipe
         

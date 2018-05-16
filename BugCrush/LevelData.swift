@@ -12,6 +12,7 @@ class LevelData: Codable {
     let tiles: [[Int]]
     let targetScore: Int
     let moves: Int
+    let background: Int
     
     static func loadFrom(file filename: String) -> LevelData? {
         var data: Data

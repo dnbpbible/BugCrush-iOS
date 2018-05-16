@@ -20,6 +20,7 @@ class Level {
     
     var targetScore = 0
     var maximumMoves = 0
+    var background = 0
     
     init(filename: String) {
         guard let levelData = LevelData.loadFrom(file: filename) else { return }
@@ -34,6 +35,7 @@ class Level {
         }
         targetScore = levelData.targetScore
         maximumMoves = levelData.moves
+        background = levelData.background
     }
     
     func cookie(atColumn column: Int, row: Int) -> Cookie? {
