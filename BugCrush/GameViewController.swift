@@ -56,9 +56,8 @@ class GameViewController: UIViewController {
         scene = GameScene(size: skView.bounds.size, background: level.background)
         scene.scaleMode = .aspectFill
         scene.level = level
-
-        scene.addTiles()
         scene.swipeHandler = handleSwipe
+        scene.addTiles()
         
         gameOverPanel.isHidden = true
         shuffleButton.isHidden = true
