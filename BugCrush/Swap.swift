@@ -7,10 +7,10 @@
 //
 
 struct Swap: CustomStringConvertible, Hashable {
-    let cookieA: Cookie
-    let cookieB: Cookie
+    let cookieA: Bug
+    let cookieB: Bug
     
-    init(cookieA: Cookie, cookieB: Cookie) {
+    init(cookieA: Bug, cookieB: Bug) {
         self.cookieA = cookieA
         self.cookieB = cookieB
     }

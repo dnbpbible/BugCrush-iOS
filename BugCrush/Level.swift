@@ -13,7 +13,7 @@ let numRows = 9
 let numLevels = 4
 
 class Level {
-    private var cookies = Array2D<Cookie>(columns: numColumns, rows: numRows)
+    private var cookies = Array2D<Bug>(columns: numColumns, rows: numRows)
     private var tiles = Array2D<Tile>(columns: numColumns, rows: numRows)
     private var possibleSwaps: Set<Swap> = []
     private var comboMultiplier = 0
@@ -38,7 +38,7 @@ class Level {
         background = levelData.background
     }
     
-    func cookie(atColumn column: Int, row: Int) -> Cookie? {
+    func cookie(atColumn column: Int, row: Int) -> Bug? {
         precondition(column >= 0 && column < numColumns)
         precondition(row >= 0 && row < numRows)
         return cookies[column, row]
@@ -50,8 +50,8 @@ class Level {
         return tiles[column, row]
     }
     
-    func shuffle() -> Set<Cookie> {
-        var set: Set<Cookie>
+    func shuffle() -> Set<Bug> {
+        var set: Set<Bug>
         repeat {
             set = createInitialCookies()
             detectPossibleSwaps()
@@ -60,21 +60,21 @@ class Level {
         return set
     }
     
-    private func createInitialCookies() -> Set<Cookie> {
-        var set: Set<Cookie> = []
+    private func createInitialCookies() -> Set<Bug> {
+        var set: Set<Bug> = []
         for row in 0..<numRows {
             for column in 0..<numColumns {
                 if tiles[column, row] != nil {
-                    var cookieType: CookieType
+                    var cookieType: BugType
                     repeat {
-                        cookieType = CookieType.random()
+                        cookieType = BugType.random()
                     } while (column >= 2 &&
                         cookies[column - 1, row]?.cookieType == cookieType &&
                         cookies[column - 2, row]?.cookieType == cookieType)
                         || (row >= 2 &&
                             cookies[column, row - 1]?.cookieType == cookieType &&
                             cookies[column, row - 2]?.cookieType == cookieType)
-                    let cookie = Cookie(column: column, row: row, cookieType: cookieType)
+                    let cookie = Bug(column: column, row: row, cookieType: cookieType)
                     cookies[column, row] = cookie
                     set.insert(cookie)
                 }
@@ -259,10 +259,10 @@ class Level {
         }
     }
     
-    func fillHoles() -> [[Cookie]] {
-        var columns: [[Cookie]] = []
+    func fillHoles() -> [[Bug]] {
+        var columns: [[Bug]] = []
         for column in 0..<numColumns {
-            var array = [Cookie]()
+            var array = [Bug]()
             for row in 0..<numRows {
                 if tiles[column, row] != nil && cookies[column, row] == nil {
                     for lookup in (row + 1)..<numRows {
@@ -283,20 +283,20 @@ class Level {
         return columns
     }
     
-    func topUpCookies() -> [[Cookie]] {
-        var columns: [[Cookie]] = []
-        var cookieType: CookieType = .unknown
+    func topUpCookies() -> [[Bug]] {
+        var columns: [[Bug]] = []
+        var cookieType: BugType = .unknown
         for column in 0..<numColumns {
-            var array: [Cookie] = []
+            var array: [Bug] = []
             var row = numRows - 1
             while row >= 0 && cookies[column, row] == nil {
                 if tiles[column, row] != nil {
-                    var newCookieType: CookieType
+                    var newCookieType: BugType
                     repeat {
-                        newCookieType = CookieType.random()
+                        newCookieType = BugType.random()
                     } while newCookieType == cookieType
                     cookieType = newCookieType
-                    let cookie = Cookie(column: column, row: row, cookieType: cookieType)
+                    let cookie = Bug(column: column, row: row, cookieType: cookieType)
                     cookies[column, row] = cookie
                     array.append(cookie)
                 }

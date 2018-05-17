@@ -65,7 +65,7 @@ class GameScene: SKScene {
         let _ = SKLabelNode(fontNamed: "GillSans-BoldItalic")
     }
 
-    func addSprites(for cookies: Set<Cookie>) {
+    func addSprites(for cookies: Set<Bug>) {
         for cookie in cookies {
             let sprite = SKSpriteNode(imageNamed: cookie.cookieType.spriteName)
             sprite.size = CGSize(width: tileWidth, height: tileHeight)
@@ -252,7 +252,7 @@ class GameScene: SKScene {
         run(invalidSwapSound)
     }
     
-    func showSelectionIndicator(of cookie: Cookie) {
+    func showSelectionIndicator(of cookie: Bug) {
         if selectionSprite.parent != nil {
             selectionSprite.removeFromParent()
         }
@@ -289,7 +289,7 @@ class GameScene: SKScene {
         run(SKAction.wait(forDuration: 0.3), completion: completion)
     }
     
-    func animateFallingCookies(in columns: [[Cookie]], completion: @escaping () -> Void) {
+    func animateFallingCookies(in columns: [[Bug]], completion: @escaping () -> Void) {
         var longestDuration: TimeInterval = 0
         for array in columns {
             for (index, cookie) in array.enumerated() {
@@ -309,7 +309,7 @@ class GameScene: SKScene {
         run(SKAction.wait(forDuration: longestDuration), completion: completion)
     }
     
-    func animateNewCookies(in columns: [[Cookie]], completion: @escaping () -> Void) {
+    func animateNewCookies(in columns: [[Bug]], completion: @escaping () -> Void) {
         var longestDuration: TimeInterval = 0
         for array in columns {
             let startRow = array[0].row + 1

@@ -29,7 +29,7 @@
 		DA908BCD20A5D2B200E3FDD5 /* Grid.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DA908BCC20A5D2B200E3FDD5 /* Grid.atlas */; };
 		DA908BE220A5D5E500E3FDD5 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA908BE120A5D5E500E3FDD5 /* Tile.swift */; };
 		DA908BE420A5D62000E3FDD5 /* Swap.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA908BE320A5D62000E3FDD5 /* Swap.swift */; };
-		DA908BE620A5D65400E3FDD5 /* Cookie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA908BE520A5D65400E3FDD5 /* Cookie.swift */; };
+		DA908BE620A5D65400E3FDD5 /* Bug.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA908BE520A5D65400E3FDD5 /* Bug.swift */; };
 		DA908BE820A5DA3900E3FDD5 /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA908BE720A5DA3900E3FDD5 /* Array2D.swift */; };
 		DA908BEA20A5DAF500E3FDD5 /* LevelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA908BE920A5DAF500E3FDD5 /* LevelData.swift */; };
 		DA908BEC20A5DDD800E3FDD5 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA908BEB20A5DDD800E3FDD5 /* Level.swift */; };
@@ -82,7 +82,7 @@
 		DA908BCC20A5D2B200E3FDD5 /* Grid.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Grid.atlas; sourceTree = "<group>"; };
 		DA908BE120A5D5E500E3FDD5 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		DA908BE320A5D62000E3FDD5 /* Swap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swap.swift; sourceTree = "<group>"; };
-		DA908BE520A5D65400E3FDD5 /* Cookie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cookie.swift; sourceTree = "<group>"; };
+		DA908BE520A5D65400E3FDD5 /* Bug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bug.swift; sourceTree = "<group>"; };
 		DA908BE720A5DA3900E3FDD5 /* Array2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
 		DA908BE920A5DAF500E3FDD5 /* LevelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelData.swift; sourceTree = "<group>"; };
 		DA908BEB20A5DDD800E3FDD5 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
@@ -164,7 +164,7 @@
 			children = (
 				DA908B9E20A5D11200E3FDD5 /* GameScene.swift */,
 				DA908BED20A5DDE400E3FDD5 /* Chain.swift */,
-				DA908BE520A5D65400E3FDD5 /* Cookie.swift */,
+				DA908BE520A5D65400E3FDD5 /* Bug.swift */,
 				DA908BEB20A5DDD800E3FDD5 /* Level.swift */,
 				DA908BA020A5D11200E3FDD5 /* GameViewController.swift */,
 				DA908BE920A5DAF500E3FDD5 /* LevelData.swift */,
@@ -354,7 +354,7 @@
 			files = (
 				DA908BE820A5DA3900E3FDD5 /* Array2D.swift in Sources */,
 				DA908B9F20A5D11200E3FDD5 /* GameScene.swift in Sources */,
-				DA908BE620A5D65400E3FDD5 /* Cookie.swift in Sources */,
+				DA908BE620A5D65400E3FDD5 /* Bug.swift in Sources */,
 				DA908BEC20A5DDD800E3FDD5 /* Level.swift in Sources */,
 				DA908BA120A5D11200E3FDD5 /* GameViewController.swift in Sources */,
 				DA908BEE20A5DDE400E3FDD5 /* Chain.swift in Sources */,

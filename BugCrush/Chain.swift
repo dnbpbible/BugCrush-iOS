@@ -7,7 +7,7 @@
 //
 
 class Chain: CustomStringConvertible, Hashable {
-    var cookies: [Cookie] = []
+    var cookies: [Bug] = []
     var score = 0
     var chainType: ChainType
 
@@ -27,15 +27,15 @@ class Chain: CustomStringConvertible, Hashable {
         self.chainType = chainType
     }
     
-    func add(cookie: Cookie) {
+    func add(cookie: Bug) {
         cookies.append(cookie)
     }
     
-    func firstCookie() -> Cookie {
+    func firstCookie() -> Bug {
         return cookies[0]
     }
     
-    func lastCookie() -> Cookie {
+    func lastCookie() -> Bug {
         return cookies[cookies.count - 1]
     }
     
