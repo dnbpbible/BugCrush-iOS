@@ -1,5 +1,5 @@
 //
-//  Cookie.swift
+//  Bug.swift
 //  BugCrush
 //
 //  Created by Paul E. Bible on 5/11/18.
@@ -37,13 +37,13 @@ enum BugType: Int {
 class Bug: CustomStringConvertible, Hashable {
     var column: Int
     var row: Int
-    var cookieType: BugType
+    var bugType: BugType
     var sprite: SKSpriteNode?
     
-    init(column: Int, row: Int, cookieType: BugType) {
+    init(column: Int, row: Int, bugType: BugType) {
         self.column = column
         self.row = row
-        self.cookieType = cookieType
+        self.bugType = bugType
     }
     
     var hashValue: Int {
@@ -55,6 +55,6 @@ class Bug: CustomStringConvertible, Hashable {
     }
     
     var description: String {
-        return "type:\(cookieType) square:(\(column),\(row))"
+        return "type:\(bugType) square:(\(column),\(row))"
     }
 }

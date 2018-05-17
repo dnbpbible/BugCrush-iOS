@@ -10,10 +10,10 @@ import Foundation
 
 let numColumns = 9
 let numRows = 9
-let numLevels = 4
+let numLevels = 5
 
 class Level {
-    private var cookies = Array2D<Bug>(columns: numColumns, rows: numRows)
+    private var bugs = Array2D<Bug>(columns: numColumns, rows: numRows)
     private var tiles = Array2D<Tile>(columns: numColumns, rows: numRows)
     private var possibleSwaps: Set<Swap> = []
     private var comboMultiplier = 0
@@ -38,10 +38,10 @@ class Level {
         background = levelData.background
     }
     
-    func cookie(atColumn column: Int, row: Int) -> Bug? {
+    func bug(atColumn column: Int, row: Int) -> Bug? {
         precondition(column >= 0 && column < numColumns)
         precondition(row >= 0 && row < numRows)
-        return cookies[column, row]
+        return bugs[column, row]
     }
     
     func tileAt(column: Int, row: Int) -> Tile? {
@@ -53,30 +53,30 @@ class Level {
     func shuffle() -> Set<Bug> {
         var set: Set<Bug>
         repeat {
-            set = createInitialCookies()
+            set = createInitialBugs()
             detectPossibleSwaps()
             print("possible swaps: \(possibleSwaps)")
         } while possibleSwaps.count == 0
         return set
     }
     
-    private func createInitialCookies() -> Set<Bug> {
+    private func createInitialBugs() -> Set<Bug> {
         var set: Set<Bug> = []
         for row in 0..<numRows {
             for column in 0..<numColumns {
                 if tiles[column, row] != nil {
-                    var cookieType: BugType
+                    var bugType: BugType
                     repeat {
-                        cookieType = BugType.random()
+                        bugType = BugType.random()
                     } while (column >= 2 &&
-                        cookies[column - 1, row]?.cookieType == cookieType &&
-                        cookies[column - 2, row]?.cookieType == cookieType)
+                        bugs[column - 1, row]?.bugType == bugType &&
+                        bugs[column - 2, row]?.bugType == bugType)
                         || (row >= 2 &&
-                            cookies[column, row - 1]?.cookieType == cookieType &&
-                            cookies[column, row - 2]?.cookieType == cookieType)
-                    let cookie = Bug(column: column, row: row, cookieType: cookieType)
-                    cookies[column, row] = cookie
-                    set.insert(cookie)
+                            bugs[column, row - 1]?.bugType == bugType &&
+                            bugs[column, row - 2]?.bugType == bugType)
+                    let bug = Bug(column: column, row: row, bugType: bugType)
+                    bugs[column, row] = bug
+                    set.insert(bug)
                 }
             }
         }
@@ -84,21 +84,21 @@ class Level {
     }
     
     private func hasChain(atColumn column: Int, row: Int) -> Bool {
-        let cookieType = cookies[column, row]!.cookieType
+        let bugType = bugs[column, row]!.bugType
         
         // Horizontal chain check
         var horizontalLength = 1
         
         // Left
         var i = column - 1
-        while i >= 0 && cookies[i, row]?.cookieType == cookieType {
+        while i >= 0 && bugs[i, row]?.bugType == bugType {
             i -= 1
             horizontalLength += 1
         }
         
         // Right
         i = column + 1
-        while i < numColumns && cookies[i, row]?.cookieType == cookieType {
+        while i < numColumns && bugs[i, row]?.bugType == bugType {
             i += 1
             horizontalLength += 1
         }
@@ -109,14 +109,14 @@ class Level {
 
         // Down
         i = row - 1
-        while i >= 0 && cookies[column, i]?.cookieType == cookieType {
+        while i >= 0 && bugs[column, i]?.bugType == bugType {
             i -= 1
             verticalLength += 1
         }
         
         // Up
         i = row + 1
-        while i < numRows && cookies[column, i]?.cookieType == cookieType {
+        while i < numRows && bugs[column, i]?.bugType == bugType {
             i += 1
             verticalLength += 1
         }
@@ -129,41 +129,41 @@ class Level {
         for row in 0..<numRows {
             for column in 0..<numColumns {
                 if column < numColumns - 1,
-                    let cookie = cookies[column, row] {
+                    let bug = bugs[column, row] {
                     
-                    // Has a cookie in this spot? If no tile, then no cookie
-                    if let other = cookies[column + 1, row] {
+                    // Has a bug in this spot? If no tile, then no bug
+                    if let other = bugs[column + 1, row] {
 
                         // Swap them
-                        cookies[column, row] = other
-                        cookies[column + 1, row] = cookie
+                        bugs[column, row] = other
+                        bugs[column + 1, row] = bug
                         
-                        // Is either cookie now part of a chain?
+                        // Is either bug now part of a chain?
                         if hasChain(atColumn: column + 1, row: row) ||
                             hasChain(atColumn: column, row: row) {
-                            set.insert(Swap(cookieA: cookie, cookieB: other))
+                            set.insert(Swap(bugA: bug, bugB: other))
                         }
                         
                         // Swap them back
-                        cookies[column, row] = cookie
-                        cookies[column + 1, row] = other
+                        bugs[column, row] = bug
+                        bugs[column + 1, row] = other
                     }
                     if row < numRows - 1,
-                        let other = cookies[column, row + 1] {
+                        let other = bugs[column, row + 1] {
                         
                         // Swap them
-                        cookies[column, row] = other
-                        cookies[column, row + 1] = cookie
+                        bugs[column, row] = other
+                        bugs[column, row + 1] = bug
                         
-                        // Is either cookie now part of a chain?
+                        // Is either bug now part of a chain?
                         if hasChain(atColumn: column, row: row + 1) ||
                             hasChain(atColumn: column, row: row) {
-                            set.insert(Swap(cookieA: cookie, cookieB: other))
+                            set.insert(Swap(bugA: bug, bugB: other))
                         }
                         
                         // Swap them back
-                        cookies[column, row] = cookie
-                        cookies[column, row + 1] = other
+                        bugs[column, row] = bug
+                        bugs[column, row + 1] = other
                     }
                 }
             }
@@ -172,18 +172,18 @@ class Level {
     }
     
     func performSwap(_ swap: Swap) {
-        let columnA = swap.cookieA.column
-        let rowA = swap.cookieA.row
-        let columnB = swap.cookieB.column
-        let rowB = swap.cookieB.row
+        let columnA = swap.bugA.column
+        let rowA = swap.bugA.row
+        let columnB = swap.bugB.column
+        let rowB = swap.bugB.row
         
-        cookies[columnA, rowA] = swap.cookieB
-        swap.cookieB.column = columnA
-        swap.cookieB.row = rowA
+        bugs[columnA, rowA] = swap.bugB
+        swap.bugB.column = columnA
+        swap.bugB.row = rowA
         
-        cookies[columnB, rowB] = swap.cookieA
-        swap.cookieA.column = columnB
-        swap.cookieA.row = rowB
+        bugs[columnB, rowB] = swap.bugA
+        swap.bugA.column = columnB
+        swap.bugA.row = rowB
     }
     
     func isPossibleSwap(_ swap: Swap) -> Bool {
@@ -195,15 +195,15 @@ class Level {
         for row in 0..<numRows {
             var column = 0
             while column < numColumns - 2 {
-                if let cookie = cookies[column, row] {
-                    let matchType = cookie.cookieType
-                    if cookies[column + 1, row]?.cookieType == matchType &&
-                        cookies[column + 2, row]?.cookieType == matchType {
+                if let bug = bugs[column, row] {
+                    let matchType = bug.bugType
+                    if bugs[column + 1, row]?.bugType == matchType &&
+                        bugs[column + 2, row]?.bugType == matchType {
                         let chain = Chain(chainType: .horizontal)
                         repeat {
-                            chain.add(cookie: cookies[column, row]!)
+                            chain.add(bug: bugs[column, row]!)
                             column += 1
-                        } while column < numColumns && cookies[column, row]?.cookieType == matchType
+                        } while column < numColumns && bugs[column, row]?.bugType == matchType
                         set.insert(chain)
                         continue
                     }
@@ -219,15 +219,15 @@ class Level {
         for column in 0..<numColumns {
             var row = 0
             while row < numRows - 2 {
-                if let cookie = cookies[column, row] {
-                    let matchType = cookie.cookieType
-                    if cookies[column, row + 1]?.cookieType == matchType &&
-                        cookies[column, row + 2]?.cookieType == matchType {
+                if let bug = bugs[column, row] {
+                    let matchType = bug.bugType
+                    if bugs[column, row + 1]?.bugType == matchType &&
+                        bugs[column, row + 2]?.bugType == matchType {
                         let chain = Chain(chainType: .vertical)
                         repeat {
-                            chain.add(cookie: cookies[column, row]!)
+                            chain.add(bug: bugs[column, row]!)
                             row += 1
-                        } while row < numRows && cookies[column, row]?.cookieType == matchType
+                        } while row < numRows && bugs[column, row]?.bugType == matchType
                         set.insert(chain)
                         continue
                     }
@@ -242,8 +242,8 @@ class Level {
         let horizontalChains = detectHorizontalMatches()
         let verticalChains = detectVerticalMatches()
 
-        removeCookies(in: horizontalChains)
-        removeCookies(in: verticalChains)
+        removeBugs(in: horizontalChains)
+        removeBugs(in: verticalChains)
         
         calculateScores(for: horizontalChains)
         calculateScores(for: verticalChains)
@@ -251,10 +251,10 @@ class Level {
         return horizontalChains.union(verticalChains)
     }
     
-    func removeCookies(in chains: Set<Chain>) {
+    func removeBugs(in chains: Set<Chain>) {
         for chain in chains {
-            for cookie in chain.cookies {
-                cookies[cookie.column, cookie.row] = nil
+            for bug in chain.bugs {
+                bugs[bug.column, bug.row] = nil
             }
         }
     }
@@ -264,13 +264,13 @@ class Level {
         for column in 0..<numColumns {
             var array = [Bug]()
             for row in 0..<numRows {
-                if tiles[column, row] != nil && cookies[column, row] == nil {
+                if tiles[column, row] != nil && bugs[column, row] == nil {
                     for lookup in (row + 1)..<numRows {
-                        if let cookie = cookies[column, lookup] {
-                            cookies[column, lookup] = nil
-                            cookies[column, row] = cookie
-                            cookie.row = row
-                            array.append(cookie)
+                        if let bug = bugs[column, lookup] {
+                            bugs[column, lookup] = nil
+                            bugs[column, row] = bug
+                            bug.row = row
+                            array.append(bug)
                             break
                         }
                     }
@@ -283,22 +283,22 @@ class Level {
         return columns
     }
     
-    func topUpCookies() -> [[Bug]] {
+    func topUpBugs() -> [[Bug]] {
         var columns: [[Bug]] = []
-        var cookieType: BugType = .unknown
+        var bugType: BugType = .unknown
         for column in 0..<numColumns {
             var array: [Bug] = []
             var row = numRows - 1
-            while row >= 0 && cookies[column, row] == nil {
+            while row >= 0 && bugs[column, row] == nil {
                 if tiles[column, row] != nil {
-                    var newCookieType: BugType
+                    var newBugType: BugType
                     repeat {
-                        newCookieType = BugType.random()
-                    } while newCookieType == cookieType
-                    cookieType = newCookieType
-                    let cookie = Bug(column: column, row: row, cookieType: cookieType)
-                    cookies[column, row] = cookie
-                    array.append(cookie)
+                        newBugType = BugType.random()
+                    } while newBugType == bugType
+                    bugType = newBugType
+                    let bug = Bug(column: column, row: row, bugType: bugType)
+                    bugs[column, row] = bug
+                    array.append(bug)
                 }
                 row -= 1
             }

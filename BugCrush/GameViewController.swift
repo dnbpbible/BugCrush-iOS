@@ -93,9 +93,9 @@ class GameViewController: UIViewController {
     }
     
     func shuffle() {
-        scene.removeAllCookieSprites()
-        let newCookies = level.shuffle()
-        scene.addSprites(for: newCookies)
+        scene.removeAllBugSprites()
+        let newBugs = level.shuffle()
+        scene.addSprites(for: newBugs)
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -121,15 +121,15 @@ class GameViewController: UIViewController {
             return
         }
         
-        scene.animateMatchedCookies(for: chains) {
+        scene.animateMatchedBugs(for: chains) {
             for chain in chains {
                 self.score += chain.score
             }
             self.updateLabels()
             let columns = self.level.fillHoles()
-            self.scene.animateFallingCookies(in: columns) {
-                let columns = self.level.topUpCookies()
-                self.scene.animateNewCookies(in: columns) {
+            self.scene.animateFallingBugs(in: columns) {
+                let columns = self.level.topUpBugs()
+                self.scene.animateNewBugs(in: columns) {
                     self.handleMatches()
                 }
             }

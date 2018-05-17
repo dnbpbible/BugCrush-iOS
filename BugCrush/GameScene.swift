@@ -13,8 +13,8 @@ class GameScene: SKScene {
     let swapSound = SKAction.playSoundFileNamed("Chomp.wav", waitForCompletion: false)
     let invalidSwapSound = SKAction.playSoundFileNamed("Error.wav", waitForCompletion: false)
     let matchSound = SKAction.playSoundFileNamed("Ka-Ching.wav", waitForCompletion: false)
-    let fallingCookieSound = SKAction.playSoundFileNamed("Scrape.wav", waitForCompletion: false)
-    let addCookieSound = SKAction.playSoundFileNamed("Drip.wav", waitForCompletion: false)
+    let fallingBugSound = SKAction.playSoundFileNamed("Scrape.wav", waitForCompletion: false)
+    let addBugSound = SKAction.playSoundFileNamed("Drip.wav", waitForCompletion: false)
     
     var level: Level!
     let tilesLayer = SKNode()
@@ -25,7 +25,7 @@ class GameScene: SKScene {
     let tileHeight: CGFloat = 36.0
     
     let gameLayer = SKNode()
-    let cookiesLayer = SKNode()
+    let bugsLayer = SKNode()
     var swipeHandler: ((Swap) -> Void)?
     
     private var swipeFromColumn: Int?
@@ -60,18 +60,18 @@ class GameScene: SKScene {
         gameLayer.addChild(tilesLayer)
         gameLayer.addChild(cropLayer)
         
-        cookiesLayer.position = layerPosition
-        cropLayer.addChild(cookiesLayer)
+        bugsLayer.position = layerPosition
+        cropLayer.addChild(bugsLayer)
         let _ = SKLabelNode(fontNamed: "GillSans-BoldItalic")
     }
 
-    func addSprites(for cookies: Set<Bug>) {
-        for cookie in cookies {
-            let sprite = SKSpriteNode(imageNamed: cookie.cookieType.spriteName)
+    func addSprites(for bugs: Set<Bug>) {
+        for bug in bugs {
+            let sprite = SKSpriteNode(imageNamed: bug.bugType.spriteName)
             sprite.size = CGSize(width: tileWidth, height: tileHeight)
-            sprite.position = pointFor(column: cookie.column, row: cookie.row)
-            cookiesLayer.addChild(sprite)
-            cookie.sprite = sprite
+            sprite.position = pointFor(column: bug.column, row: bug.row)
+            bugsLayer.addChild(sprite)
+            bug.sprite = sprite
             
             sprite.alpha = 0
             sprite.xScale = 0.5
@@ -148,13 +148,13 @@ class GameScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
-        let location = touch.location(in: cookiesLayer)
+        let location = touch.location(in: bugsLayer)
         let (success, column, row) = convertPoint(location)
         if success {
-            if let cookie = level.cookie(atColumn: column, row: row) {
+            if let bug = level.bug(atColumn: column, row: row) {
                 swipeFromColumn = column
                 swipeFromRow = row
-                showSelectionIndicator(of: cookie)
+                showSelectionIndicator(of: bug)
             }
         }
     }
@@ -162,7 +162,7 @@ class GameScene: SKScene {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard swipeFromColumn != nil else { return }
         guard let touch = touches.first else { return }
-        let location = touch.location(in: cookiesLayer)
+        let location = touch.location(in: bugsLayer)
         let (success, column, row) = convertPoint(location)
         if success {
             var horizontalDelta = 0, verticalDelta = 0
@@ -202,18 +202,18 @@ class GameScene: SKScene {
         guard toColumn >= 0 && toColumn < numColumns else { return }
         guard toRow >= 0 && toRow < numRows else { return }
         
-        if let toCookie = level.cookie(atColumn: toColumn, row: toRow),
-            let fromCookie = level.cookie(atColumn: swipeFromColumn!, row: swipeFromRow!) {
+        if let toBug = level.bug(atColumn: toColumn, row: toRow),
+            let fromBug = level.bug(atColumn: swipeFromColumn!, row: swipeFromRow!) {
             if let handler = swipeHandler {
-                let swap = Swap(cookieA: fromCookie, cookieB: toCookie)
+                let swap = Swap(bugA: fromBug, bugB: toBug)
                 handler(swap)
             }
         }
     }
     
     func animate(_ swap: Swap, completion: @escaping () -> Void) {
-        let spriteA = swap.cookieA.sprite!
-        let spriteB = swap.cookieB.sprite!
+        let spriteA = swap.bugA.sprite!
+        let spriteB = swap.bugB.sprite!
         
         spriteA.zPosition = 100
         spriteB.zPosition = 90
@@ -232,8 +232,8 @@ class GameScene: SKScene {
     }
     
     func animateInvalidSwap(_ swap: Swap, completion: @escaping () -> Void) {
-        let spriteA = swap.cookieA.sprite!
-        let spriteB = swap.cookieB.sprite!
+        let spriteA = swap.bugA.sprite!
+        let spriteB = swap.bugB.sprite!
         
         spriteA.zPosition = 100
         spriteB.zPosition = 90
@@ -252,12 +252,12 @@ class GameScene: SKScene {
         run(invalidSwapSound)
     }
     
-    func showSelectionIndicator(of cookie: Bug) {
+    func showSelectionIndicator(of bug: Bug) {
         if selectionSprite.parent != nil {
             selectionSprite.removeFromParent()
         }
-        if let sprite = cookie.sprite {
-            let texture = SKTexture(imageNamed: cookie.cookieType.highlightedSpriteName)
+        if let sprite = bug.sprite {
+            let texture = SKTexture(imageNamed: bug.bugType.highlightedSpriteName)
             selectionSprite.size = CGSize(width: tileWidth, height: tileHeight)
             selectionSprite.run(SKAction.setTexture(texture))
             sprite.addChild(selectionSprite)
@@ -271,11 +271,11 @@ class GameScene: SKScene {
             SKAction.removeFromParent()]))
     }
     
-    func animateMatchedCookies(for chains: Set<Chain>, completion: @escaping () -> Void) {
+    func animateMatchedBugs(for chains: Set<Chain>, completion: @escaping () -> Void) {
         for chain in chains {
             animateScore(for: chain)
-            for cookie in chain.cookies {
-                if let sprite = cookie.sprite {
+            for bug in chain.bugs {
+                if let sprite = bug.sprite {
                     if sprite.action(forKey: "removing") == nil {
                         let scaleAction = SKAction.scale(to: 0.1, duration: 0.3)
                         scaleAction.timingMode = .easeOut
@@ -289,13 +289,13 @@ class GameScene: SKScene {
         run(SKAction.wait(forDuration: 0.3), completion: completion)
     }
     
-    func animateFallingCookies(in columns: [[Bug]], completion: @escaping () -> Void) {
+    func animateFallingBugs(in columns: [[Bug]], completion: @escaping () -> Void) {
         var longestDuration: TimeInterval = 0
         for array in columns {
-            for (index, cookie) in array.enumerated() {
-                let newPosition = pointFor(column: cookie.column, row: cookie.row)
+            for (index, bug) in array.enumerated() {
+                let newPosition = pointFor(column: bug.column, row: bug.row)
                 let delay = 0.05 + 0.15 * TimeInterval(index)
-                let sprite = cookie.sprite!
+                let sprite = bug.sprite!
                 let duration = TimeInterval(((sprite.position.y - newPosition.y) / tileHeight) * 0.1)
                 longestDuration = max(longestDuration, duration + delay)
                 let moveAction = SKAction.move(to: newPosition, duration: duration)
@@ -303,26 +303,26 @@ class GameScene: SKScene {
                 sprite.run(
                     SKAction.sequence([
                         SKAction.wait(forDuration: delay),
-                        SKAction.group([moveAction, fallingCookieSound])]))
+                        SKAction.group([moveAction, fallingBugSound])]))
             }
         }
         run(SKAction.wait(forDuration: longestDuration), completion: completion)
     }
     
-    func animateNewCookies(in columns: [[Bug]], completion: @escaping () -> Void) {
+    func animateNewBugs(in columns: [[Bug]], completion: @escaping () -> Void) {
         var longestDuration: TimeInterval = 0
         for array in columns {
             let startRow = array[0].row + 1
-            for (index, cookie) in array.enumerated() {
-                let sprite = SKSpriteNode(imageNamed: cookie.cookieType.spriteName)
+            for (index, bug) in array.enumerated() {
+                let sprite = SKSpriteNode(imageNamed: bug.bugType.spriteName)
                 sprite.size = CGSize(width: tileWidth, height: tileHeight)
-                sprite.position = pointFor(column: cookie.column, row: startRow)
-                cookiesLayer.addChild(sprite)
-                cookie.sprite = sprite
+                sprite.position = pointFor(column: bug.column, row: startRow)
+                bugsLayer.addChild(sprite)
+                bug.sprite = sprite
                 let delay = 0.1 + 0.2 * TimeInterval(array.count - index - 1)
-                let duration = TimeInterval(startRow - cookie.row) * 0.1
+                let duration = TimeInterval(startRow - bug.row) * 0.1
                 longestDuration = max(longestDuration, duration + delay)
-                let newPosition = pointFor(column: cookie.column, row: cookie.row)
+                let newPosition = pointFor(column: bug.column, row: bug.row)
                 let moveAction = SKAction.move(to: newPosition, duration: duration)
                 moveAction.timingMode = .easeOut
                 sprite.alpha = 0
@@ -332,7 +332,7 @@ class GameScene: SKScene {
                         SKAction.group([
                             SKAction.fadeIn(withDuration: 0.05),
                             moveAction,
-                            addCookieSound])
+                            addBugSound])
                         ]))
             }
         }
@@ -340,8 +340,8 @@ class GameScene: SKScene {
     }
     
     func animateScore(for chain: Chain) {
-        let firstSprite = chain.firstCookie().sprite!
-        let lastSprite = chain.lastCookie().sprite!
+        let firstSprite = chain.firstBug().sprite!
+        let lastSprite = chain.lastBug().sprite!
         let centerPosition = CGPoint(
             x: (firstSprite.position.x + lastSprite.position.x) / 2,
             y: (firstSprite.position.y + lastSprite.position.y) / 2 - 8)
@@ -351,7 +351,7 @@ class GameScene: SKScene {
         scoreLabel.text = String(format: "%ld", chain.score)
         scoreLabel.position = centerPosition
         scoreLabel.zPosition = 300
-        cookiesLayer.addChild(scoreLabel)
+        bugsLayer.addChild(scoreLabel)
         
         let moveAction = SKAction.move(by: CGVector(dx: 0, dy: 3), duration: 0.7)
         moveAction.timingMode = .easeOut
@@ -372,7 +372,7 @@ class GameScene: SKScene {
         gameLayer.run(action, completion: completion)
     }
     
-    func removeAllCookieSprites() {
-        cookiesLayer.removeAllChildren()
+    func removeAllBugSprites() {
+        bugsLayer.removeAllChildren()
     }
 }

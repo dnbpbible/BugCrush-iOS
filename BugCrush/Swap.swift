@@ -7,24 +7,24 @@
 //
 
 struct Swap: CustomStringConvertible, Hashable {
-    let cookieA: Bug
-    let cookieB: Bug
+    let bugA: Bug
+    let bugB: Bug
     
-    init(cookieA: Bug, cookieB: Bug) {
-        self.cookieA = cookieA
-        self.cookieB = cookieB
+    init(bugA: Bug, bugB: Bug) {
+        self.bugA = bugA
+        self.bugB = bugB
     }
     
     var hashValue: Int {
-        return cookieA.hashValue ^ cookieB.hashValue
+        return bugA.hashValue ^ bugB.hashValue
     }
     
     static func ==(lhs: Swap, rhs: Swap) -> Bool {
-        return (lhs.cookieA == rhs.cookieA && lhs.cookieB == rhs.cookieB) ||
-            (lhs.cookieB == rhs.cookieA && lhs.cookieA == rhs.cookieB)
+        return (lhs.bugA == rhs.bugA && lhs.bugB == rhs.bugB) ||
+            (lhs.bugB == rhs.bugA && lhs.bugA == rhs.bugB)
     }
     
     var description: String {
-        return "swap \(cookieA) with \(cookieB)"
+        return "swap \(bugA) with \(bugB)"
     }
 }
