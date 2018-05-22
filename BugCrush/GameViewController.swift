@@ -50,6 +50,8 @@ class GameViewController: UIViewController {
     func setupLevel(number levelNumber: Int) {
         let skView = view as! SKView
         skView.isMultipleTouchEnabled = false
+        skView.showsFPS = true
+        skView.showsNodeCount = true
         
         level = Level(filename: "Level_\(levelNumber)")
 
