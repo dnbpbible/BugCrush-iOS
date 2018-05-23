@@ -8,8 +8,8 @@
 
 import Foundation
 
-let numColumns = 9
-let numRows = 9
+let numColumns = 12
+let numRows = 12
 let numLevels = 5
 
 class Level {
@@ -62,8 +62,10 @@ class Level {
     
     private func createInitialBugs() -> Set<Bug> {
         var set: Set<Bug> = []
+        print("Rows: \(numRows), Columns: \(numColumns)")
         for row in 0..<numRows {
             for column in 0..<numColumns {
+                print("Rows \(row), Column: \(column)")
                 if tiles[column, row] != nil {
                     var bugType: BugType
                     repeat {
@@ -76,6 +78,7 @@ class Level {
                             bugs[column, row - 2]?.bugType == bugType)
                     let bug = Bug(column: column, row: row, bugType: bugType)
                     bugs[column, row] = bug
+                    print("Bug for Row \(row), Column \(column)")
                     set.insert(bug)
                 }
             }
