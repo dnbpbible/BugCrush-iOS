@@ -19,7 +19,7 @@ class GameViewController: UIViewController {
     var movesLeft = 0
     var score = 0
     var tapGestureRecognizer: UITapGestureRecognizer!
-    var currentLevelNum = 0
+    var currentLevelNum = 4
     
     lazy var backgroundMusic: AVAudioPlayer? = {
         guard let url = Bundle.main.url(forResource: "Mining by Moonlight", withExtension: "mp3") else {

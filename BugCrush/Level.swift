@@ -8,8 +8,8 @@
 
 import Foundation
 
-let numColumns = 12
-let numRows = 12
+let numColumns = 11
+let numRows = 11
 let numLevels = 5
 
 class Level {

@@ -21,8 +21,8 @@ class GameScene: SKScene {
     let cropLayer = SKCropNode()
     let maskLayer = SKNode()
     
-    let tileWidth: CGFloat = 28.0
-    let tileHeight: CGFloat = 32.0
+    let tileWidth: CGFloat = 30.0
+    let tileHeight: CGFloat = 34.0
     
     let gameLayer = SKNode()
     let bugsLayer = SKNode()
